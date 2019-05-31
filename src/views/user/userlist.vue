@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { getUserListPage,getUserList } from '../../api/index';
 export default {
     data () {
         return {
@@ -41,8 +42,13 @@ export default {
         }
 
     },
-    mounted:function(){
-        this.loading = false
+    created:function(){
+        const that = this
+        // this.loading = false
+        getUserList().then((res) => {
+            console.log('cesh',res)
+            that.loading = false
+        });
     },
     methods: {
         handleSizeChange(val) {

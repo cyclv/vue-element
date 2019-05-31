@@ -9,12 +9,16 @@ import router from './router'
 import axios from 'axios'
 Vue.prototype.$http = axios
 
+import store from './store'//引入store
+ 
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,//使用store
   components: { App },
   template: '<App/>'
 })

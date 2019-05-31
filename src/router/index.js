@@ -6,6 +6,7 @@ import userlist from '@/views/user/userlist'
 import addtl from '@/views/user/adduser'
 import wdgl from '@/views/wdgl/wdgl'
 import dlslist from '@/views/dls/dlslist'
+import adminlist from '@/views/admin/adminlist'
 Vue.use(Router)
 
 export default new Router({
@@ -19,6 +20,7 @@ export default new Router({
         {'path':'/userlist','name':'userlist',component:userlist},
         {'path':'/addtl','name':'添加填料',component:addtl},
         {'path':'/wdgl','name':'网店管理',component:wdgl},
+        {'path':'/admin','name':'管理员列表',component:adminlist},
         {'path':'/dls','name':'代理商',component:dlslist}
       ]
     }

@@ -31,6 +31,7 @@ export default {
             isCollapse: true,
             ipdth:'/wdgl',
             adminlist:[
+                {id:0,name:'管理平台',type:1,icon:'el-icon-s-help',path:'./admin'},
                 {id:2,name:'客户管理',type:1,icon:'el-icon-s-help',path:'./userlist'},
                 {id:1,name:'添料管理',type:2,icon:'el-icon-eleme',path:[{id:1,name:'添料元',path:'/addtly'},{id:1,name:'添料审核',path:'/addtl'}]},
                 {id:3,name:'代 理 商',type:1,icon:'el-icon-s-help',path:'./dls'},
@@ -42,23 +43,25 @@ export default {
     created: function() {
         const ipdth =  localStorage.getItem('ipath') ;
         this.ipdth =ipdth;
+        const ceshiu = this.$store.state.showFooter
+        const ceshiu2 = this.$store.state.changableNum
+        console.log('vuex测试',ceshiu,ceshiu2)
+        // getUserList(ipdth).then((res) => {
+        //     console.log('cesh',res)
+        // });
 
-       getUserList(ipdth).then((res) => {
-            console.log('cesh',res)
-        });
-
-        var url = "https://cnodejs.org/api/v1/topics";
-        // 发送请求:将数据返回到一个回到函数中
-        var that = this;
-            // 并且响应成功以后会执行then方法中的回调函数
-        this.$http.get(url).then(function(result) {
-            // result是所有的返回回来的数据
-            // 包括了响应报文行
-            // 响应报文头
-            // 响应报文体
-            console.log(result);
+        // var url = "https://cnodejs.org/api/v1/topics";
+        // // 发送请求:将数据返回到一个回到函数中
+        // var that = this;
+        //     // 并且响应成功以后会执行then方法中的回调函数
+        // this.$http.get(url).then(function(result) {
+        //     // result是所有的返回回来的数据
+        //     // 包括了响应报文行
+        //     // 响应报文头
+        //     // 响应报文体
+        //     console.log(result);
             
-        });
+        // });
     },
     methods: {
         home(path){
@@ -69,8 +72,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 /* 外边框样式  */
+body,html,#app{
+    height: 100%;
+    margin: 0px;
+}
 .el-container{
     height: 100%;
 }
@@ -79,6 +86,7 @@ export default {
     color: #333;
     text-align: center;
     line-height: 60px;
+    height: 10%;
 }
 
 .el-aside {
@@ -86,20 +94,19 @@ export default {
     color: #333;
     text-align: center;
     line-height: 200px;
+    height: 90%;
 }
 
 .el-main {
     background-color: #E9EEF3;
     color: #333;
     text-align: center;
-}
-
-body > .el-container {
-    margin-bottom: 40px;
+    height: 90%;
 }
 /* 左侧导航条样式 */
 .el-menu-vertical-demo:not(.el-menu--collapse) {
     width: 200px;
     min-height: 400px;
+    height: 100%;
   }
 </style>
