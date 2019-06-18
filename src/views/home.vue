@@ -1,7 +1,17 @@
 <template>
 <!-- element布局方式 -->
 <el-container>
-    <el-header>Header</el-header>
+    <el-header class="flexlb">账户昵称：{{userinfo.name}}
+        <!-- <el-button type="info" @click="loginout">退出登录</el-button> -->
+        <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect" background-color='#D3DCE6'>
+            <el-submenu index="1">
+                <template slot="title">管理员信息</template>
+                <el-menu-item index="2-1">基本信息</el-menu-item>
+                <el-menu-item index="2-2">修改密码</el-menu-item>
+                <el-menu-item index="loginout">退出登录</el-menu-item>
+            </el-submenu>
+        </el-menu>
+    </el-header>
     <el-container>
         <el-aside width="200px" style="overflow:hidden;">
             <el-menu v-bind:default-active="ipdth" router class="el-menu-vertical-demo" background-color="#D3DCE6" text-color="black" active-text-color="#1E90FF">
@@ -20,6 +30,7 @@
         <el-main><router-view></router-view></el-main>
     </el-container>
 </el-container>
+
 </template>
 
 <script>
@@ -28,45 +39,42 @@ export default {
     name: 'Home',
     data () {
         return {
-            isCollapse: true,
+            // isCollapse: true,
+            userinfo:JSON.parse(this.$store.state.userinfo),
             ipdth:'/wdgl',
-            adminlist:[
+            adminlist:[-
                 {id:0,name:'管理平台',type:1,icon:'el-icon-s-help',path:'./admin'},
                 {id:2,name:'客户管理',type:1,icon:'el-icon-s-help',path:'./userlist'},
                 {id:1,name:'添料管理',type:2,icon:'el-icon-eleme',path:[{id:1,name:'添料元',path:'/addtly'},{id:1,name:'添料审核',path:'/addtl'}]},
                 {id:3,name:'代 理 商',type:1,icon:'el-icon-s-help',path:'./dls'},
                 {id:4,name:'网点管理',type:1,icon:'el-icon-goods',path:'./wdgl'},
-                {id:5,name:'财务管理',type:2,icon:'el-icon-upload',path:[{id:1,name:'流水表格',path:'/cwls'},{id:2,name:'分润设置',path:'/cwfr'},{id:3,name:'积分管理',path:'/cwjf'}]}
+                {id:1,name:'权限管理',type:2,icon:'el-icon-eleme',path:[{id:1,name:'管理员列表',path:'/adminlist'},{id:1,name:'角色列表',path:'/authority'},{id:1,name:'权限列表',path:'/authlist'}]},
+                {id:5,name:'财务管理',type:2,icon:'el-icon-upload',path:[{id:1,name:'流水表格',path:'/cwls'},{id:2,name:'分润设置',path:'/cwfr'},{id:3,name:'积分管理',path:'/cwjf'}]},
+                {id:1,name:'echarts图表',type:2,icon:'el-icon-eleme',path:[{id:1,name:'销售统计',path:'/echarts'}]},
             ]
         }
     },
     created: function() {
         const ipdth =  localStorage.getItem('ipath') ;
-        this.ipdth =ipdth;
         const ceshiu = this.$store.state.showFooter
         const ceshiu2 = this.$store.state.changableNum
-        console.log('vuex测试',ceshiu,ceshiu2)
-        // getUserList(ipdth).then((res) => {
-        //     console.log('cesh',res)
-        // });
-
-        // var url = "https://cnodejs.org/api/v1/topics";
-        // // 发送请求:将数据返回到一个回到函数中
-        // var that = this;
-        //     // 并且响应成功以后会执行then方法中的回调函数
-        // this.$http.get(url).then(function(result) {
-        //     // result是所有的返回回来的数据
-        //     // 包括了响应报文行
-        //     // 响应报文头
-        //     // 响应报文体
-        //     console.log(result);
-            
-        // });
+        const ceshiu3 = this.$store.state.userinfo
+        console.log('vuex测试',ceshiu,ceshiu2,ceshiu3)
     },
     methods: {
         home(path){
             //console.log('调整路径',path)
             localStorage.setItem('ipath',path);
+        },
+        loginout:function(){
+            console.log(111)
+        },
+        handleSelect(key, keyPath) {
+            if(key == 'loginout'){
+                localStorage.clear('userinfo')
+                this.$router.push('/login')
+                console.log('退出登录')
+            }
         }
     }
 }
