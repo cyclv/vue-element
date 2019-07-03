@@ -50,7 +50,7 @@ export default {
                 {id:4,name:'网点管理',type:1,icon:'el-icon-goods',path:'./wdgl'},
                 {id:1,name:'权限管理',type:2,icon:'el-icon-eleme',path:[{id:1,name:'管理员列表',path:'/adminlist'},{id:1,name:'角色列表',path:'/authority'},{id:1,name:'权限列表',path:'/authlist'}]},
                 {id:5,name:'财务管理',type:2,icon:'el-icon-upload',path:[{id:1,name:'流水表格',path:'/cwls'},{id:2,name:'分润设置',path:'/cwfr'},{id:3,name:'积分管理',path:'/cwjf'}]},
-                {id:1,name:'echarts图表',type:2,icon:'el-icon-eleme',path:[{id:1,name:'销售统计',path:'/echarts'}]},
+                {id:1,name:'echarts图表',type:2,icon:'el-icon-eleme',path:[{id:1,name:'销售统计',path:'/echarts'},{id:1,name:'网点统计',path:'/map'}]},
             ]
         }
     },

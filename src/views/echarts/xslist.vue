@@ -85,13 +85,6 @@ export default {
                 ]
             })
             echarts.registerMap('zj',zhejiang)
-            zhejiangChart.hideLoading();
-            console.log(zhejiang)
-            // var resizeMyChartContainer = function(){
-            //     zhejiangChart.style.width=(1000/2)+'px'//页面一半的大小
-            // } 
-            // resizeMyChartContainer();
-            // var zhejiang123 = this.$echarts.init(zhejiangChart); 
             function randomData() {  
                 return Math.round(Math.random()*500);  
             }
