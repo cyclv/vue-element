@@ -26,6 +26,12 @@ export default {
   justify-content: flex-start;
   align-items: center;
 }
+.flexed{
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-end;
+  align-items: center;
+}
 .flexct{
   display: flex;
   flex-direction: row;

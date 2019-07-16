@@ -12,6 +12,7 @@ import login from '@/views/login'
 import authority from '@/views/admin/authority'
 import authlist from '@/views/admin/authlist'
 import map from '@/views/echarts/map'
+import ceshi from '@/views/echarts/cdshi'
 
 import echarts from '@/views/echarts/xslist'
 Vue.use(Router)
@@ -40,6 +41,11 @@ export default new Router({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/ceshi',
+      name: 'ceshi',
+      component: ceshi
     }
   ]
 })
